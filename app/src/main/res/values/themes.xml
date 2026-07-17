@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.S8116504Assignment2" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#1a1a1a</item>
+        <item name="colorPrimaryVariant">#1a1a1a</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.S8116504Assignment2" parent="Base.Theme.S8116504Assignment2" />
+
+    <style name="BlackBottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">#1a1a1a</item>
+        <item name="itemTextColor">#1a1a1a</item>
+        <item name="backgroundTint">#FFFFFF</item>
+    </style>
+
+</resources>
