@@ -75,5 +75,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+
 }
 

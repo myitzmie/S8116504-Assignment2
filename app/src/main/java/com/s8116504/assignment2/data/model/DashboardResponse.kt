@@ -5,7 +5,7 @@ data class DashboardResponse(
     val entityTotal: Int
 )
 data class EntityResponse(
-    val property1: String,
-    val property2: String,
-    val description: String
+    val property1: String? = null,
+    val property2: String? = null,
+    val description: String? = null
 )

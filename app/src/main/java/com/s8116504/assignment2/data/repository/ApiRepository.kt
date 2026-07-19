@@ -15,9 +15,10 @@ class ApiRepository @Inject constructor(
         val response = apiService.getDashboard(keypass)
         return response.entities.map {
             Entity(
-                title = it.property1,
-                description = it.description
+                title = it.property1 ?: it.property2 ?: "Unknown",
+                description = it.description ?: ""
             )
         }
+
     }
 }

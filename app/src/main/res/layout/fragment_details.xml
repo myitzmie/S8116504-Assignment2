@@ -35,7 +35,7 @@
                     android:id="@+id/ivBack"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:src="@drawable/menu_icon"
+                    android:src="@drawable/back_ic"
                     app:tint="#000000" />
 
                 <TextView
@@ -48,9 +48,9 @@
                     android:textColor="#1a1a1a"
                     android:gravity="center" />
 
-                <!-- TODO: Add your app icon here -->
                 <ImageView
                     android:layout_width="28dp"
+                    android:src="@drawable/app_icon_black"
                     android:layout_height="28dp" />
 
             </LinearLayout>
@@ -74,9 +74,8 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/app_icon"
-                    android:background="@drawable/bg_circle_grey"
                     android:padding="8dp"
-                    android:scaleType="centerInside" />
+                    android:scaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -95,6 +94,7 @@
                         android:fontFamily="serif" />
 
                     <TextView
+                        android:id="@+id/tvEntityType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Photography style"
@@ -121,6 +121,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/tvStat1Value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="12"
@@ -147,6 +148,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/tvStat2Value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.8"
@@ -173,6 +175,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/tvStat3Value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2019"
@@ -232,26 +235,68 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="3"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                >
 
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#E0E0E0"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#D5D5D5"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#E0E0E0"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#D5D5D5"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#E0E0E0"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
-                <ImageView android:layout_width="0dp" android:layout_height="120dp"
-                    android:layout_columnWeight="1" android:background="#D5D5D5"
-                    android:scaleType="centerCrop" android:layout_margin="1dp" />
+                <!-- Gallery image 1 -->
+                <ImageView
+                    android:id="@+id/ivGallery1"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
+
+                <!-- Gallery image 2 -->
+                <ImageView
+                    android:id="@+id/ivGallery2"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#D5D5D5"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
+
+                <!-- Gallery image 3 -->
+                <ImageView
+                    android:id="@+id/ivGallery3"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
+
+                <!-- Gallery image 4 -->
+                <ImageView
+                    android:id="@+id/ivGallery4"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#D5D5D5"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
+
+                <!-- Gallery image 5 -->
+                <ImageView
+                    android:id="@+id/ivGallery5"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
+
+                <!-- Gallery image 6 -->
+                <ImageView
+                    android:id="@+id/ivGallery6"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:background="#D5D5D5"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="1dp" />
 
             </GridLayout>
 

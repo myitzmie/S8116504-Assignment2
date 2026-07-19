@@ -76,6 +76,24 @@ class LoginFragment : Fragment() {
         val cbToS = view.findViewById<android.widget.CheckBox>(R.id.cbToS)
         val tvToSLink = view.findViewById<TextView>(R.id.tvToSLink)
 
+        var isPasswordVisible = false
+
+        ivPasswordToggle.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                // Show password
+                etPassword.inputType = android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                ivPasswordToggle.setImageResource(R.drawable.show_ic)
+            } else {
+                // Hide password
+                etPassword.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                ivPasswordToggle.setImageResource(R.drawable.hide_ic)
+            }
+            // Keep cursor at end
+            etPassword.setSelection(etPassword.text.length)
+        }
+
 // Open/download ToS when link tapped
         tvToSLink.setOnClickListener {
             openToSDocument()

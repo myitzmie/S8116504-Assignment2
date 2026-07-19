@@ -11,7 +11,7 @@ import android.widget.ImageView
 
 class EntityAdapter(
     private var entities: List<Entity> = listOf(),
-    private val onItemClick: (Entity) -> Unit
+    private val onItemClick: (Entity, Int) -> Unit
 ) : RecyclerView.Adapter<EntityAdapter.EntityViewHolder>() {
 
     class EntityViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,20 +28,29 @@ class EntityAdapter(
         val entity = entities[position]
         holder.tvTitle.text = entity.title
 
-        // Cycle through images since API doesn't return images
         val images = listOf(
-            R.drawable.background,
-            R.drawable.background,
-            R.drawable.background,
-            R.drawable.background,
-            R.drawable.background,
-            R.drawable.background
+            R.drawable.img_1,
+            R.drawable.img_2,
+            R.drawable.img_3,
+            R.drawable.img_4,
+            R.drawable.img_5,
+            R.drawable.img_6
         )
         holder.ivImage.setImageResource(images[position % images.size])
 
         holder.itemView.setOnClickListener {
-            onItemClick(entity)
+            onItemClick(entity, position)
         }
+
+        val titles = listOf(
+            "bout' JWW",
+            "bout' CBG",
+            "040319.txt",
+            "260515.svt",
+            "film_jww",
+            "film_cbg"
+        )
+        holder.tvTitle.text = titles[position % titles.size]
     }
 
     override fun getItemCount() = entities.size
