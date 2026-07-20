@@ -162,7 +162,7 @@ git clone https://github.com/myitzmie/S8116504-Assignment2.git
 
 ## 🎨 Design
 
-The app follows **Material 3 (Material You)** design guidelines with a minimalist, VSCO-inspired aesthetic:
+The app follows **Material 3** design guidelines with a minimalist, VSCO-inspired aesthetic:
 
 - Dark gradient login background
 - Clean white dashboard with image grid
