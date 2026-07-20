@@ -44,12 +44,12 @@ class DashboardFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvDashboard)
         val bottomNav = view.findViewById<BottomNavigationView>(R.id.bottomNav)
-
         val keypass = arguments?.getString("keypass") ?: ""
         android.util.Log.d("DASH_DEBUG", "Keypass received: '$keypass'")
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
+        //RecycleVIew data initializing
         val titles = listOf(
             "bout' JWW",
             "bout' CBG",
@@ -176,7 +176,7 @@ class DashboardFragment : Fragment() {
             }
             true
         }
-
+//Bottom navigation bar
         bottomNav.selectedItemId = R.id.nav_home
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {

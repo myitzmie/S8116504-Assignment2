@@ -86,16 +86,16 @@
         android:id="@+id/ivFeatured"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:background="#E0E0E0"
         android:src="@drawable/features"
         android:scaleType="centerCrop"
+        android:background="@drawable/bg_featured_border"
+        android:padding="1dp"
         app:layout_constraintTop_toBottomOf="@id/etSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDashboard"
         android:layout_width="0dp"
