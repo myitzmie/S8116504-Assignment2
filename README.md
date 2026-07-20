@@ -49,6 +49,7 @@ com.s8116504.assignment2
 │   │   ├── ApiService.kt          # Retrofit API interface
 │   │   └── RetrofitClient.kt      # Retrofit + OkHttp client setup
 │   ├── model
+│   │   ├── CardDetails.kt         # Details card data class
 │   │   ├── Entity.kt              # Dashboard entity data class
 │   │   ├── DashboardResponse.kt   # API response model
 │   │   ├── LoginRequest.kt        # Login request body
@@ -136,7 +137,7 @@ Tests are located in `app/src/test/java/com/s8116504/assignment2/`
 > 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/S8116504Assignment2.git
+git clone https://github.com/myitzmie/S8116504-Assignment2.git
 ```
 
 2. Open in Android Studio
@@ -146,8 +147,8 @@ git clone https://github.com/yourusername/S8116504Assignment2.git
 4. Run on emulator or physical device (API 24+)
 
 5. Login with:
-   - **Username:** Your Student ID (e.g. `s8116504`)
-   - **Password:** Your First Name (e.g. `Amy`)
+   - **Username:** s8116504
+   - **Password:** Amy
 
 ---
 
@@ -155,7 +156,7 @@ git clone https://github.com/yourusername/S8116504Assignment2.git
 
 | Login | Dashboard | Details |
 |-------|-----------|---------|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Details](screenshots/details.png) |
+| ![Login](screenshots/login_page.png) | ![Dashboard](screenshots/dashboard_page.png) | ![Details](screenshots/details_page.png) |
 
 ---
 
@@ -215,7 +216,7 @@ The app follows **Material 3 (Material You)** design guidelines with a minimalis
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
 ```
-## ⚠️ Troubleshooting & Known Issues
+## ⚠️ Troubleshooting
 
 ### API Connection Error ("Unable to resolve host")
 When first opening the app or clicking **'Enter Studio'**, you may see a red error message stating:
@@ -232,6 +233,20 @@ If you have waited and the error still won't disappear, the Android Virtual Devi
 3. Check the behavior:
    * **If it loads a message or page:** The internet is working. Completely restart your assignment application and press **'Enter Studio'** again.
    * **If it fails to load:** The emulator itself has no network access. Wipe data or cold-boot your emulator inside Android Studio's Device Manager, check your computer's internet, and try again.
+  
+### Other issues and solutions
+
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| **App crashes on launch** | Missing INTERNET permission | Check `AndroidManifest.xml` has `<uses-permission android:name="android.permission.INTERNET" />` |
+| **RecyclerView empty** | Keypass not passed correctly | Check Logcat for `DASH_DEBUG` tag to verify keypass is received |
+| **Purple button color** | Material theme override | Add `style="@style/Widget.MaterialComponents.Button.UnelevatedButton"` and `app:backgroundTint="@null"` to button |
+| **Build failed - kapt error** | Incompatible Kotlin version | Use `ksp` instead of `kapt` for Hilt compiler |
+| **Navigation safe args error** | Version mismatch | Ensure safe args plugin version matches navigation dependency version |
+| **Emulator installation failed** | Broken pipe / connection drop | Run `adb kill-server` then `adb start-server` in terminal |
+| **@Parcelize unresolved** | Plugin not applied | Add `id("kotlin-parcelize")` to plugins block in `build.gradle.kts` |
+| **Dashboard shows empty after login** | API field names don't match model | Make `EntityResponse` fields nullable with `String? = null` |
+
 
 ---
 
