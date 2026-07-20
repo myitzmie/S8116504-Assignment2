@@ -2,7 +2,6 @@ package com.s8116504.assignment2.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.s8116504.assignment2.data.model.LoginRequest
 import com.s8116504.assignment2.data.repository.ApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
