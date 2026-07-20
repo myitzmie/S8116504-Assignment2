@@ -1,38 +1,220 @@
-# Aperio Photography App 📸
+# Aperio - Photography Studio App
+### NIT3213 Mobile Application Development — Final Assignment
+**Student ID:** s8116504  
+**Student Name:** Amy Nguyen  
+**Campus:** Sydney  
 
-Aperio is a modern Android photography application built entirely in Kotlin. It allows users to organize their personal photos by custom categories and view albums through a sleek, social-media-inspired layout.
+---
 
-## ✨ Key Features
-* **Categorized Storage:** Easily group, sort, and organize photos into distinct custom categories.
-* **Instagram-Styled Albums:** View album collections through a rich, interactive details page inspired by modern social media layouts.
-* **Sleek Layouts:** Clean grid views for browsing categories alongside a beautiful, immersive media presentation layer.
-* **Built 100% in Kotlin:** Leverages modern Android development practices for fast performance and structural stability.
+## 📱 App Overview
 
-## 🛠️ Tech Stack & Architecture
-* **Language:** [Kotlin](https://kotlinlang.org)
-* **Build System:** Gradle (Kotlin DSL)
-* **Minimum SDK:** Android 8.0 (API 26) or higher
+Aperio is a minimalist photography studio Android application built using modern Android development practices. The app connects to a REST API to display a curated collection of photography styles and techniques, presented through a clean, VSCO-inspired interface.
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
-Before running this project, ensure you have the following installed:
-* [Android Studio](https://android.com) (Ladybug or newer)
-* JDK 17 or higher
+## ✨ Features
 
-### Installation
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com
-   ```
-2. Open Android Studio.
-3. Select **File > Open** and choose the `S8116504Assignment2` project folder.
-4. Allow Gradle to sync and build the project files automatically.
-5. Run the application on an Android Emulator or a connected physical testing device.
+- **Login Screen** — Authenticates users via the NIT3213 API using student credentials
+- **Dashboard Screen** — Displays a grid of photography styles fetched from the API
+- **Details Screen** — Shows full information about a selected photography style including gallery
+- **Sliding Drawer Menu** — Navigation drawer accessible from the menu icon
+- **Terms of Service** — ToS acknowledgement checkbox on login screen
+- **Password Toggle** — Show/hide password on login screen
+- **Bottom Navigation** — Consistent navigation bar across dashboard and details screens
 
-## 📂 Core Project Components
-* `/app/src/main/java` - Contains the Kotlin source files for managing categories and album detail logic.
-* `/app/src/main/res` - Houses the XML/Compose layout files responsible for the Instagram-style user interface.
+---
+
+## 🏗️ Architecture & Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Language | Kotlin |
+| Architecture | MVVM (Model-View-ViewModel) |
+| Dependency Injection | Hilt |
+| Navigation | Navigation Component + Safe Args |
+| Networking | Retrofit 2 + OkHttp |
+| JSON Parsing | Gson |
+| Async | Kotlin Coroutines + StateFlow |
+| UI | XML Views + Material 3 |
+| Testing | JUnit 4 + MockK + Coroutines Test |
+
+---
+
+## 📂 Project Structure
+
+```
+com.s8116504.assignment2
+├── data
+│   ├── api
+│   │   ├── ApiService.kt          # Retrofit API interface
+│   │   └── RetrofitClient.kt      # Retrofit + OkHttp client setup
+│   ├── model
+│   │   ├── Entity.kt              # Dashboard entity data class
+│   │   ├── DashboardResponse.kt   # API response model
+│   │   ├── LoginRequest.kt        # Login request body
+│   │   └── LoginResponse.kt       # Login response with keypass
+│   └── repository
+│       └── ApiRepository.kt       # Data layer — API calls
+├── di
+│   └── AppModule.kt               # Hilt dependency injection module
+├── ui
+│   ├── login
+│   │   └── LoginViewModel.kt      # Login state management
+│   └── dashboard
+│       ├── DashboardViewModel.kt  # Dashboard state management
+│       └── EntityAdapter.kt       # RecyclerView adapter
+├── LoginFragment.kt               # Login screen
+├── DashboardFragment.kt           # Dashboard screen
+├── DetailsFragment.kt             # Details screen
+├── MainActivity.kt                # Single activity host
+└── MyApplication.kt               # Hilt application class
+```
+
+---
+
+## 🔌 API Details
+
+**Base URL:** `https://nit3213api.onrender.com/`
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/sydney/auth` | POST | Login with student credentials |
+| `/dashboard/{keypass}` | GET | Fetch dashboard entities |
+
+**Login Request:**
+```json
+{
+  "username": "s8116504",
+  "password": "Amy"
+}
+```
+
+**Login Response:**
+```json
+{
+  "keypass": "fashion"
+}
+```
+
+**Dashboard Response:**
+```json
+{
+  "entities": [
+    {
+      "property1": "value1",
+      "property2": "value2",
+      "description": "Detailed description"
+    }
+  ],
+  "entityTotal": 7
+}
+```
+
+---
+
+## 🧪 Unit Tests
+
+Tests are located in `app/src/test/java/com/s8116504/assignment2/`
+
+| Test File | Tests |
+|-----------|-------|
+| `LoginViewModelTest.kt` | Login success, login failure, initial idle state |
+| `DashboardViewModelTest.kt` | Fetch success, fetch failure, entity count, initial idle state |
+
+**Run tests:**
+```bash
+./gradlew testDebugUnitTest
+```
+
+---
+
+## 🚀 How to Run
+> **Note:** The API is hosted on Render's free tier and may be in sleep mode.
+> Before logging in, please wake the server by visiting:
+> [https://nit3213api.onrender.com/](https://nit3213api.onrender.com/)
+> Wait until the page loads (may take 30–60 seconds), then launch the app.
+> 
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/S8116504Assignment2.git
+```
+
+2. Open in Android Studio
+
+3. Sync Gradle
+
+4. Run on emulator or physical device (API 24+)
+
+5. Login with:
+   - **Username:** Your Student ID (e.g. `s8116504`)
+   - **Password:** Your First Name (e.g. `Amy`)
+
+---
+
+## 📸 Screenshots
+
+| Login | Dashboard | Details |
+|-------|-----------|---------|
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Details](screenshots/details.png) |
+
+---
+
+## 🎨 Design
+
+The app follows **Material 3 (Material You)** design guidelines with a minimalist, VSCO-inspired aesthetic:
+
+- Dark gradient login background
+- Clean white dashboard with image grid
+- Instagram-style details layout with gallery grid
+- Consistent black/white colour palette
+- Serif typography for artistic feel
+
+---
+
+## 📦 Dependencies
+
+```gradle
+// Retrofit (API calls)
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
+
+    // View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.11.0")
+
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.11.0")
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.60.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.60.1")
+
+    //Recycleview
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+
+    //Material
+    implementation("com.google.android.material:material:1.14.0")
+
+    //Navigation component
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.8")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //Drawer Layout
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+
+    // Testing
+    testImplementation("io.mockk:mockk:1.14.11")
+    testImplementation("io.mockk:mockk-android:1.14.11")
+    testImplementation("io.mockk:mockk-agent:1.14.11")
+    testImplementation(libs.junit)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+```
 ## ⚠️ Troubleshooting & Known Issues
 
 ### API Connection Error ("Unable to resolve host")
@@ -50,3 +232,11 @@ If you have waited and the error still won't disappear, the Android Virtual Devi
 3. Check the behavior:
    * **If it loads a message or page:** The internet is working. Completely restart your assignment application and press **'Enter Studio'** again.
    * **If it fails to load:** The emulator itself has no network access. Wipe data or cold-boot your emulator inside Android Studio's Device Manager, check your computer's internet, and try again.
+
+---
+
+## 👩‍💻 Author
+
+**Amy Nguyen** — s8116504  
+Victoria University, Sydney Campus  
+NIT3213 Android Application Development
