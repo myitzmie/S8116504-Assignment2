@@ -2,7 +2,6 @@ package com.s8116504.assignment2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -11,8 +10,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host) as NavHostFragment
-        val navController = navHostFragment.navController
     }
 }
